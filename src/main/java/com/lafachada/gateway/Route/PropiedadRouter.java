@@ -20,7 +20,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> getPropiedadById() {
         return route("get_propiedad_by_id")
-            .GET("/api/v0/propiedad/obtenerPorId/{id}", http())
+            .GET("/api/v0/propiedad/{id}", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -28,7 +28,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> deletePropiedad() {
         return route("delete_propiedad_by_id")
-            .DELETE("/api/v0/propiedad/eliminar/{id}", http())
+            .DELETE("/api/v0/propiedad/{id}", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -36,7 +36,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> buscarPropiedad() {
         return route("buscar_propiedad")
-            .GET("/api/v0/propiedad/buscar", http())
+            .GET("/api/v0/propiedad/", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -44,7 +44,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> crearPropiedad() {
         return route("crear_propiedad")
-            .POST("/api/v0/propiedad/crear/", http())
+            .POST("/api/v0/propiedad/", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -52,7 +52,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> modificarPropiedad() {
         return route("modificar_propiedad")
-            .PATCH("/api/v0/propiedad/modificar/", http())
+            .PATCH("/api/v0/propiedad/", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }

@@ -3,12 +3,12 @@ package com.lafachada.gateway.Route;
 import static org.springframework.cloud.gateway.server.mvc.filter.BeforeFilterFunctions.uri;
 import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
-
 
 @Configuration
 public class AgendaRouter {
@@ -19,7 +19,7 @@ public class AgendaRouter {
     @Bean
     public RouterFunction<ServerResponse> buscarPorIdCliente() {
         return route("get_id_client")
-            .GET("/api/v0/agenda/buscarPorIdCliente/{id}", http())
+            .GET("/api/v0/agenda/cliente/{id}", http())
             .before(uri(agendaServiceUrl))
             .build();
     }
@@ -27,7 +27,7 @@ public class AgendaRouter {
     @Bean
     public RouterFunction<ServerResponse> buscarPorIdVendedor() {
         return route("get_id_seller")
-            .GET("/api/v0/agenda/buscarPorIdVendedor/{id}", http())
+            .GET("/api/v0/agenda/vendedor/{id}", http())
             .before(uri(agendaServiceUrl))
             .build();
     }
@@ -35,7 +35,7 @@ public class AgendaRouter {
     @Bean
     public RouterFunction<ServerResponse> deleteAgenda() {
         return route("delete_by_id")
-            .DELETE("/api/v0/agenda/buscarPorIdVendedor/{id}", http())
+            .DELETE("/api/v0/agenda/{id}", http())
             .before(uri(agendaServiceUrl))
             .build();
     }
@@ -43,7 +43,7 @@ public class AgendaRouter {
     @Bean
     public RouterFunction<ServerResponse> crearAgenda() {
         return route("create_agenda")
-            .POST("/api/v0/agenda/agendar/", http())
+            .POST("/api/v0/agenda/", http())
             .before(uri(agendaServiceUrl))
             .build();
     }
