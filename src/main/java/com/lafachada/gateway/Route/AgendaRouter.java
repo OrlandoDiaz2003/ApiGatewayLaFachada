@@ -43,7 +43,7 @@ public class AgendaRouter {
     @Bean
     public RouterFunction<ServerResponse> crearAgenda() {
         return route("create_agenda")
-            .POST("/api/v0/agenda/", http())
+            .POST("/api/v0/agenda", http())
             .before(uri(agendaServiceUrl))
             .build();
     }

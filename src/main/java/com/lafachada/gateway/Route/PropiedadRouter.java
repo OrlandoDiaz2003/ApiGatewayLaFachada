@@ -36,7 +36,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> buscarPropiedad() {
         return route("buscar_propiedad")
-            .GET("/api/v0/propiedad/", http())
+            .GET("/api/v0/propiedad", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -44,7 +44,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> crearPropiedad() {
         return route("crear_propiedad")
-            .POST("/api/v0/propiedad/", http())
+            .POST("/api/v0/propiedad", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
@@ -52,7 +52,7 @@ public class PropiedadRouter {
     @Bean
     public RouterFunction<ServerResponse> modificarPropiedad() {
         return route("modificar_propiedad")
-            .PATCH("/api/v0/propiedad/", http())
+            .PATCH("/api/v0/propiedad/{id}", http())
             .before(uri(propiedadServiceUrl))
             .build();
     }
