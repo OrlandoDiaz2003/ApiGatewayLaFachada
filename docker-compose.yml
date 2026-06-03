@@ -2,8 +2,20 @@ services:
   api_gateway:
     container_name: api-gateway
     build: .
-    network_mode: "host"
     ports:
       - "8085:8085"
     environment:
       - JWT_SECRET=${JWT_SECRET}
+      - PROPIEDAD_URL=${PROPIEDAD_URL}
+      - AGENDA_URL=${AGENDA_URL}
+      - USUARIO_URL=${USUARIO_URL}
+      - PAGO_URL=${PAGO_URL}
+      - PUBLICACION_URL=${PUBLICACION_URL}
+      - RESENA_URL=${RESENA_URL}
+
+    networks: 
+      - lafachada-network
+
+networks:
+  lafachada-network:
+    external: true
