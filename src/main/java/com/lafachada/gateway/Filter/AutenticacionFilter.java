@@ -1,6 +1,5 @@
 package com.lafachada.gateway.Filter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.function.HandlerFilterFunction;
@@ -13,8 +12,11 @@ import com.lafachada.gateway.Service.JwtService;
 @Component
 public class AutenticacionFilter implements HandlerFilterFunction<ServerResponse, ServerResponse>{
 
-    @Autowired
     private JwtService jwtService;
+
+    public AutenticacionFilter(JwtService service) {
+        this.jwtService = service;
+    }
 
     @Override
     public ServerResponse filter(ServerRequest request, HandlerFunction<ServerResponse> next) throws Exception {
@@ -34,6 +36,5 @@ public class AutenticacionFilter implements HandlerFilterFunction<ServerResponse
         } catch (Exception e){
         }
         return ServerResponse.status(HttpStatus.UNAUTHORIZED).build();
-
     }
 }

@@ -1,0 +1,9 @@
+services:
+  api_gateway:
+    container_name: api-gateway
+    build: .
+    network_mode: "host"
+    ports:
+      - "8085:8085"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}

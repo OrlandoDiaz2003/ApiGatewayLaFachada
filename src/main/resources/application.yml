@@ -4,7 +4,7 @@ spring:
       mvc:
         cors-configurations:
           '[/**]':
-            allowed-origins: "http://localhost:puerto_frontend"
+            allowed-origins: "http://localhost:3000"
             allowed-methods:
               - GET
               - POST
