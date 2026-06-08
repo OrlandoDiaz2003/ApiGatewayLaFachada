@@ -3,6 +3,12 @@ export
 
 .PHONY: run build test clean
 
+docker-test:
+	docker compose -f docker-compose.local.yml up --build
+
+docker-clean:
+	docker compose down -v
+
 run:
 	./mvnw spring-boot:run
 
