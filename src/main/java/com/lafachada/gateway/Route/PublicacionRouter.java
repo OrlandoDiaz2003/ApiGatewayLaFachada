@@ -26,6 +26,14 @@ public class PublicacionRouter {
     }
 
     @Bean
+    public RouterFunction<ServerResponse> subirFoto() {
+        return route("upload_photo")
+            .POST("/api/v1/publicacion/{id}/fotos", http())
+            .before((uri(publicacionUrl)))
+            .build();
+    }
+
+    @Bean
     public RouterFunction<ServerResponse> obtenerPublicacionPorId() {
         return route("get_publication_by_id")
             .GET("/api/v1/publicacion/{id}", http())
