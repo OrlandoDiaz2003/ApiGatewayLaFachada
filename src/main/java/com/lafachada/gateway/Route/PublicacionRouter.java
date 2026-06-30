@@ -42,6 +42,14 @@ public class PublicacionRouter {
     }
 
     @Bean
+    public RouterFunction<ServerResponse> obtenerPorPropiedadIds() {
+        return route("get_by_property_id")
+        .POST("api/v1/publicacion/por-propiedades", http())
+        .before((uri(publicacionUrl)))
+        .build();
+    }
+
+    @Bean
     public RouterFunction<ServerResponse> crearPublicacion() {
         return route("create_publication_by_id")
             .POST("/api/v1/publicacion/crear", http())
@@ -65,4 +73,3 @@ public class PublicacionRouter {
             .build();
     }
 }
- 

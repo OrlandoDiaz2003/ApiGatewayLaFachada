@@ -42,6 +42,14 @@ public class PropiedadRouter {
     }
 
     @Bean
+    public RouterFunction<ServerResponse> buscarPorCiudad() {
+        return route("buscar_por_ciudad")
+            .GET("/api/v0/propiedad/ciudad/{id}", http())
+            .before(uri(propiedadServiceUrl))
+            .build();
+    }
+
+    @Bean
     public RouterFunction<ServerResponse> crearPropiedad() {
         return route("crear_propiedad")
             .POST("/api/v0/propiedad", http())
